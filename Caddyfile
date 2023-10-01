@@ -1,0 +1,8 @@
+http://localhost:8080
+
+reverse_proxy /api http://localhost:8000
+reverse_proxy /api/* http://localhost:8000
+reverse_proxy /docs http://localhost:8000
+reverse_proxy /docs/* http://localhost:8000
+reverse_proxy /openapi.json http://localhost:8000
+reverse_proxy * http://localhost:4200

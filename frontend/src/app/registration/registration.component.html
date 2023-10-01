@@ -1,0 +1,24 @@
+<h1>Registration</h1>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="pid">PID</label>
+        <input id="pid" type="text" formControlName="pid">
+      </div>
+
+    <div>
+      <label for="first_name">First Name</label>
+      <input id="first_name" type="text" formControlName="first_name">
+    </div>
+    
+    <div>
+      <label for="last_name">Last Name</label>
+      <input id="last_name" type="text" formControlName="last_name">
+    </div>
+
+    <button class="button" type="submit">Register</button>
+</form>
+
+<hr>
+
+<a routerLink="/">Home</a>

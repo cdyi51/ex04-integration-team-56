@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  httpd:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - ../backend/.env
+    volumes:
+      - ..:/workspace
+      - ex04-fullstack-node_modules:/workspace/frontend/node_modules
+    command: /bin/sh -c "while sleep 1000; do :; done"
+
+volumes:
+  ex04-fullstack-node_modules:

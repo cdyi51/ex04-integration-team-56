@@ -1,0 +1,7 @@
+<h1>Check-In System</h1>
+
+<ul>
+  <li *ngFor="let story of stories">
+    <a [title]="story.name" [routerLink]="[story.route]">{{ story.name }}</a>
+  </li>
+</ul>

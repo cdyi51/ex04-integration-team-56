@@ -1,0 +1,11 @@
+table {
+    margin-bottom: 1em;
+}
+
+td {
+    padding: 0.5em;
+}
+
+tr:nth-child(even) {
+    background: whitesmoke;
+}

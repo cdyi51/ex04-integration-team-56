@@ -1,0 +1,21 @@
+<h1>Stats</h1>
+
+<h2>Registered Members</h2>
+<table>
+    <thead>
+        <td>PID</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users$ | async">
+            <td>{{ user.pid }}</td>
+            <td>{{ user.first_name}}</td>
+            <td>{{ user.last_name }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr>
+
+<a routerLink="/">Home</a>
