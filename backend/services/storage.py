@@ -75,7 +75,7 @@ class StorageService:
         global _registrations
         return _registrations[pid] if pid in _registrations else None
 
-    def delete_user(self, user: User) ->None:
+    def delete_user(self, pid: int) ->None:
         """Delete user from Registration and Checkins
 
         Args:
@@ -90,16 +90,16 @@ class StorageService:
         global _registrations
         global _checkins
 
-        if(user):
+        if(pid):
                 
             #Delete Registration
-            if user.pid in _registrations:
-                _registrations.pop(user.pid)
+            if pid in _registrations:
+                _registrations.pop(pid)
             else:
                 raise Exception("User not registered")
             #Delete Checkins
             for checkin in _checkins:
-                if checkin.user == user:
+                if checkin.user.pid == pid:
                     _checkins.remove(checkin)
             return
         else:

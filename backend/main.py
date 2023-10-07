@@ -1,6 +1,8 @@
 from fastapi import FastAPI, HTTPException, Depends
 from models.user import User
 from services.storage import StorageService
+from models.checkin import Checkin
+from models.checkin_request import CheckinRequest
 import os
 
 app = FastAPI()
@@ -46,7 +48,7 @@ def listCheckins(storage_service: StorageService = Depends()) ->list[Checkin]:
 @app.delete("/api/registrations/{pid}")
 def removeUser(pid: int, storage_service: StorageService = Depends()) -> str:
     try:
-        storage_service.delete_user(storage_service.get_user_by_pid(pid))
+        storage_service.delete_user(pid)
         return f"User with pid {pid} has been deleted"
     except Exception as e:
         raise HTTPException(status_code=404, detail=str(e))
