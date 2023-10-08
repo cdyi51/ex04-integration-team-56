@@ -44,6 +44,5 @@ export class CheckinPageComponent {
   private onError(err: Error){
     //If pid not found
     window.alert("PID could not be found.");
-    this.checkinForm.reset();
   }
 }
