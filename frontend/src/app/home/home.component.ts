@@ -13,6 +13,10 @@ export class HomeComponent {
     {
       name: "Stats",
       route: "/stats"
+    },
+    {
+      name: "Check In",
+      route: "/checkin"
     }
   ]
 }
