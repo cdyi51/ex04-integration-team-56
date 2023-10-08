@@ -81,3 +81,36 @@ def test_create_checkin_produces_checkin(storage_service: StorageService):
     checkins = storage_service.get_checkins()
     assert len(checkins) == 1
     assert checkins[0].user == user
+
+def test_delete_user_invalid_user(storage_service: StorageService):
+    with pytest.raises(Exception):
+        storage_service.delete_user(None)
+
+def test_delete_user_not_found(storage_service: StorageService):
+    pid = 123123123
+    user = User(pid=pid, first_name="Not", last_name="Found")
+    with pytest.raises(Exception):
+        storage_service.delete_user(user)
+
+def test_delete_user_registration(storage_service: StorageService):
+    pid = 123123123
+    user = User(pid=pid, first_name="Not", last_name="Found")
+    storage_service.create_registration(user)
+    storage_service.delete_user(user)
+    #asserts that user is no longer registered
+    assert storage_service.get_user_by_pid(user.pid) is None
+
+def test_delete_user_checkin(storage_service: StorageService):
+    pid = 123123123
+    user = User(pid=pid, first_name="Not", last_name="Found")
+    storage_service.create_registration(user)
+    storage_service.create_checkin(user.pid)
+    storage_service.delete_user(user)
+    
+    checkinContainsUser = False
+    for checkin in storage_service.get_checkins():
+        if checkin.user  == user:
+            checkinContainsUser = True
+    #asserts that user is not logged in checkins
+    assert checkinContainsUser is False
+
