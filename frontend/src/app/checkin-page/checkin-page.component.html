@@ -1,0 +1,16 @@
+<h1>Check In Page</h1>
+
+      <div>
+        <label for="PID">
+          Enter PID:
+        </label>
+        <form [formGroup]="checkinForm" (ngSubmit)="onSubmit()" >
+            <input id="pid" type="number" formControlName="pid"  required maxlength="9" required minlength="9" >
+            <button class="button" type="submit">Check In</button>
+        </form>
+      </div>
+    
+    <nav>
+        <a routerLink="">Back to Home Page</a>
+    </nav>
+  
