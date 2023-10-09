@@ -12,6 +12,26 @@
             <td>{{ user.pid }}</td>
             <td>{{ user.first_name}}</td>
             <td>{{ user.last_name }}</td>
+             <!-- this is gonna be a button eventually -->
+            <td> Delete User </td>
+
+        </tr>
+    </tbody>
+</table>
+
+<h2>Checkins</h2>
+
+<table>
+    <thead>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Date</td>
+    </thead>
+    <tbody>
+        <tr *ngFor="let checkin of transformedCheckins$ | async">
+            <td>{{ checkin.user.first_name }}</td>
+            <td>{{ checkin.user.last_name}}</td>
+            <td>{{ checkin.created_at }}</td>
         </tr>
     </tbody>
 </table>
