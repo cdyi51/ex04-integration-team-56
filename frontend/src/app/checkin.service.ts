@@ -27,11 +27,13 @@ export class CheckinService {
 
     return this.checkins$.pipe(
       map(checkinArray => 
-        checkinArray.map(checkin => ({
-          ...checkin,
-          date: datePipe.transform(new Date(checkin.created_at), 'yyyy/MM/dd @ hh:mma')
-        }),
-        )
+        {
+          for (var checkin of checkinArray){
+            checkin.created_at = datePipe.transform(new Date(checkin.created_at), 'yyyy/MM/dd @ hh:mma')!;
+          }
+          return checkinArray;
+        }
+
       )
       // , 
       // tap(transformedCheckins => {
