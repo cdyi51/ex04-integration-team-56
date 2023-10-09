@@ -22,10 +22,11 @@ export class StatsComponent {
   }
 
   deleteUser(pid: number) {
-    this.registrationService.deleteUser(pid);
+    this.registrationService.deleteUser(pid).subscribe();
+    
     // re-initialize users and checkins
-    this.registrationService.getUsers();
-    this.checkinService.getCheckins();
+    this.users$ = this.registrationService.getUsers();
+    this.transformedCheckins$ = this.checkinService.getCheckins();
   }
 
 }

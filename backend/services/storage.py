@@ -95,13 +95,10 @@ class StorageService:
             #Delete Registration
             if pid in _registrations:
                 _registrations.pop(pid)
-            else:
-                raise Exception("User not registered")
-            #Delete Checkins
-            for checkin in _checkins:
-                if checkin.user.pid == pid:
-                    _checkins.remove(checkin)
+                            #Delete Checkins
+                _checkins = [checkin for checkin in _checkins if checkin.user.pid != pid]
             return
+
         else:
             raise Exception("User to be deleted does not exist.")
 

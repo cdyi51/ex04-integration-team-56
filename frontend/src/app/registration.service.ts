@@ -55,7 +55,10 @@ export class RegistrationService {
   }
 
   deleteUser(pid: number) {
-    return this.http.delete<User>(`/api/registrations/${pid}`);
+    console.log("Delete User registration service called")
+    console.log("/api/registrations/"+ pid)
+    return this.http.delete<string>("/api/registrations/"+ pid);
+
 }
 
 
